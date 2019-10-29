@@ -1,3 +1,3 @@
 ### Eloquent JS
 
-Basic of JS≈
+Basic of JS
