@@ -1,13 +1,19 @@
-// This is the old skipSpace. Modify it...
-function skipSpace(string) {
-  let first = string.match(/^(\s|#.*)*/);
-  return string.slice(first[0].length);
-}
+// Modify these definitions...
 
-console.log(parse("# hello\nx"));
-// → {type: "word", name: "x"}
+topScope.array = (...values) => values
 
-console.log(parse("a # one\n   # two\n()"));
-// → {type: "apply",
-//    operator: {type: "word", name: "a"},
-//    args: []}
+topScope.length = arr => arr.length
+
+topScope.element = (arr, n) => arr[n]
+
+run(`
+do(define(sum, fun(array,
+     do(define(i, 0),
+        define(sum, 0),
+        while(<(i, length(array)),
+          do(define(sum, +(sum, element(array, i))),
+             define(i, +(i, 1)))),
+        sum))),
+   print(sum(array(1, 2, 3))))
+`)
+// → 6

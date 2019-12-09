@@ -1,21 +1,15 @@
-async function locateScalpel (nest) {
-  let current = nest.name
-  while (true) {
-    let next = await anyStorage(nest, current, 'scalpel')
-    if (current === next) break
-    current = next
-  }
-  return current
+function doHomework (subject, callback) {
+  alert(`Starting my ${subject} homework.`)
+  callback()
 }
-locateScalpel(bigOak)
 
-function locateScalpel2 (nest) {
-  function next (current) {
-    return anyStorage(nest, current, 'scalpel').then(value =>
-      (value === current) ? value : next(value)
-    )
-  }
-  return next(nest.name)
+doHomework('math', () => alert('Finished my homework'))
+
+function first () {
+  setTimeout(() => console.log(1), 500)
 }
-locateScalpel(bigOak).then(console.log)
-locateScalpel2(bigOak).then(console.log)
+function second () {
+  console.log(2)
+}
+first()
+second()
