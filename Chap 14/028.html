@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cat and Hat</title>
+  <style>
+    body {
+      min-height: 200px
+    }
+
+    #cat {
+      position: absolute;
+      top: 150px;
+      left: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="img/cat.png" id="cat">
+  <img src="img/hat.png" id="hat" style="position: absolute">
+
+  <script>
+    let cat = document.querySelector("#cat");
+    let hat = document.querySelector("#hat");
+
+    let angle = 0;
+    let lastTime = null;
+    function animate(time) {
+      if (lastTime != null) angle += (time - lastTime) * 0.001;
+      lastTime = time;
+      hat.style.top = (Math.sin(angle) * 40 + 40) + "px";
+      hat.style.left = (Math.cos(angle) * 200 + 230) + "px";
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+
+</html>
