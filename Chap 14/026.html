@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mountains</title>
+</head>
+
+<body>
+  <h1>Mountains</h1>
+  <div id="mountains"></div>
+  <script>
+    const MOUNTAINS = [
+      { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+      { name: "Everest", height: 8848, place: "Nepal" },
+      { name: "Mount Fuji", height: 3776, place: "Japan" },
+      { name: "Vaalserberg", height: 323, place: "Netherlands" },
+      { name: "Denali", height: 6168, place: "United States" },
+      { name: "Popocatepetl", height: 5465, place: "Mexico" },
+      { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+    ]
+    const table = document.createElement('table')
+    const headerRow = document.createElement('tr')
+    const headerElements = ['Name', 'Height', 'Place']
+    for (header of headerElements) {
+      const head = document.createElement('th')
+      head.innerHTML = header
+      head.style.padding = "5px"
+      headerRow.appendChild(head)
+    }
+    table.appendChild(headerRow)
+    for (row of MOUNTAINS) {
+      const bodyRow = document.createElement('tr')
+      for (key of Object.keys(row)) {
+        const td = document.createElement('td')
+        td.innerHTML = row[key]
+        td.style.padding = "5px"
+        if (key === "height") td.style.textAlign = "right"
+        bodyRow.appendChild(td)
+      }
+      table.appendChild(bodyRow)
+    }
+    document.getElementById('mountains').appendChild(table)
+  </script>
+</body>
+
+</html>
