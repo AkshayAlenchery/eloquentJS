@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Balloon</title>
+</head>
+
+<body>
+  <p id="balloon">🎈</p>
+  <script>
+    const balloon = document.getElementById('balloon')
+    balloon.style.fontSize = "20px"
+
+    const updateBallon = (event) => {
+      const currFontSize = balloon.style.fontSize.slice(0, 2) * 1
+      if (event.key === 'ArrowUp') {
+        const newFontSize = currFontSize + (currFontSize * 0.1)
+        if (newFontSize > 100) {
+          window.removeEventListener('keydown', updateBallon)
+          balloon.innerHTML = "💥"
+        } else
+          balloon.style.fontSize = newFontSize + "px"
+      }
+      if (event.key === 'ArrowDown') {
+        const newFontSize = currFontSize - (currFontSize * 0.1)
+        if (newFontSize > 20)
+          balloon.style.fontSize = newFontSize + "px"
+        else console.log('Ballon can\'t be smaller')
+      }
+    }
+
+    window.addEventListener('keydown', updateBallon)
+  </script>
+</body>
+
+</html>
