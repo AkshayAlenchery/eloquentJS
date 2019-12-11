@@ -9,30 +9,27 @@
 </head>
 
 <body>
-  <p id="balloon">🎈</p>
+  <p>🎈</p>
   <script>
-    const balloon = document.getElementById('balloon')
-    balloon.style.fontSize = "20px"
-
-    const updateBallon = (event) => {
-      const currFontSize = balloon.style.fontSize.slice(0, 2) * 1
+    const balloon = document.querySelector('p')
+    let FontSize
+    const setFontSize = fontSize => {
+      FontSize = fontSize
+      balloon.style.fontSize = fontSize + 'px'
+    }
+    setFontSize(20)
+    const updateFontSize = event => {
       if (event.key === 'ArrowUp') {
-        const newFontSize = currFontSize + (currFontSize * 0.1)
-        if (newFontSize > 100) {
-          window.removeEventListener('keydown', updateBallon)
-          balloon.innerHTML = "💥"
-        } else
-          balloon.style.fontSize = newFontSize + "px"
-      }
-      if (event.key === 'ArrowDown') {
-        const newFontSize = currFontSize - (currFontSize * 0.1)
-        if (newFontSize > 20)
-          balloon.style.fontSize = newFontSize + "px"
-        else console.log('Ballon can\'t be smaller')
+        if (FontSize > 100) {
+          balloon.textContent = "💥"
+          window.removeEventListener('keydown', updateFontSize)
+        } else setFontSize(FontSize + FontSize * 0.1)
+      } else if (event.key === 'ArrowDown') {
+        if (FontSize > 20) setFontSize(FontSize - FontSize * 0.1)
+        else console.log("Cant be smaller than this!!")
       }
     }
-
-    window.addEventListener('keydown', updateBallon)
+    window.addEventListener('keydown', updateFontSize)
   </script>
 </body>
 
