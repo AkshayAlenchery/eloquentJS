@@ -19,8 +19,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/marijnh/Eloquent-JavaScript.git"
-  },
-  "scripts": {
-    "start": "node skillsharing_server"
   }
 }
