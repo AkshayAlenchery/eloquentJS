@@ -6,11 +6,11 @@ const types = [
   'application/rainbows+unicorns'
 ]
 
-async function showTypes () {
-  for (let type of types) {
-    let resp = await fetch(url, { headers: { accept: type } })
+async function request () {
+  for (const type of types) {
+    const resp = await fetch(url, { headers: { accept: type } })
     console.log(`${type}: ${await resp.text()}\n`)
   }
 }
 
-showTypes()
+request()
