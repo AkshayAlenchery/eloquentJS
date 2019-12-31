@@ -1,0 +1,26 @@
+<script src ='draw_graph.js'></script>
+<script src ='22_fast.js'></script>
+<script>
+  function findPath (a, b) {
+    const work = [[a]]
+
+    for (let path of work) {
+      const end = path[path.length - 1]
+      if (end === b) return path
+      for (let next of end.edges) {
+        if (!work.some(path => path[path.length - 1] === next)) {
+          work.push(path.concat([next]))
+        }
+      }
+    }
+  }
+
+  const graph = treeGraph(4, 4)
+  const root = graph[0]
+  const leaf = graph[graph.length - 1]
+  console.log(findPath(root, leaf).length)
+  // → 4
+
+  leaf.connect(root)
+  console.log(findPath(root, leaf).length)
+</script>
