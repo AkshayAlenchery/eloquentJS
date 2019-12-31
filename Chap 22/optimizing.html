@@ -1,16 +1,14 @@
-<script src ='draw_graph.js'></script>
-<script src ='22_fast.js'></script>
-<script> 
-  function time (findPath) {
+<script src="draw_graph.js"></script>
+<script src="22_fast.js"></script>
+<script>
+  function time(findPath) {
     const graph = treeGraph(6, 6)
     const startTime = Date.now()
     const result = findPath(graph[0], graph[graph.length - 1])
-    console.log(
-      `Path with length ${result.length} found in ${Date.now() - startTime}ms`
-    )
+    console.log(`Path with length ${result.length} found in ${Date.now() - startTime}ms`)
   }
 
-  function findPathSet (a, b) {
+  function findPathSet(a, b) {
     const work = [[a]]
     const reached = new Set([a])
     for (let path of work) {
@@ -27,13 +25,13 @@
 
   time(findPathSet)
 
-  function pathToArray (path) {
+  function pathToArray(path) {
     const result = []
     for (; path; path = path.via) result.unshift(path.at)
     return result
   }
 
-  function findPathList (a, b) {
+  function findPathList(a, b) {
     const work = [{ at: a, via: null }]
     const reached = new Set([a])
     for (let path of work) {

@@ -1,7 +1,7 @@
-<script src ='draw_graph.js'></script>
-<script src ='22_fast.js'></script>
+<script src="draw_graph.js"></script>
+<script src="22_fast.js"></script>
 <script>
-  function findPath (a, b) {
+  function findPath(a, b) {
     const work = [[a]]
 
     for (let path of work) {
@@ -19,8 +19,6 @@
   const root = graph[0]
   const leaf = graph[graph.length - 1]
   console.log(findPath(root, leaf).length)
-  // → 4
-
   leaf.connect(root)
   console.log(findPath(root, leaf).length)
 </script>
